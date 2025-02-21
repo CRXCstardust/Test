@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PS - PLAY LINK</title>
+    <script src="https://cdn.jwplayer.com/libraries/KB5zFt7A.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #player {
+            width: 80%;
+            max-width: 800px;
+        }
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .modal-buttons button {
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="player"></div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>Join Our Telegram Channel</h2>
+            <p>Stay updated with the latest streams and news.</p>
+            <div class="modal-buttons">
+                <button id="joinChannel">Join Now</button>
+                <button id="closeModal">Close</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const m3u8Url = "https://live-cdn.psplay.site/ct/hin/ps_live.m3u8?psplaylink=7d322081affa47fbf1e386cb213a06ba3a12ce0a13121613af520b04e14a7b197c291e256d139510d45d819522b444080b93a066c82f68d7fae00fb74463f9221264334aab8e6427e33ed7758f6b53284a2fbb015aa127a3dff66267d82faa3d49f8245513fcaa2e7b0e095bc83d7360801b52c23a9cbd7f7a7df484da534cdf2d344c4bb8d9f3f381d935f8700bbd28005da040e44ca7b9e92ab517b9768bcee775a10eceded8b2ee2a61aa8d85f36adfc45a4455f5458e5d36cfc5f105009a";jwplayer("player").setup({
+        file: m3u8Url,
+        width: "100%",
+        aspectratio: "16:9",
+        autostart: true,
+    });
+    
+    const modal = document.getElementById("myModal");
+    const closeModal = document.getElementById("closeModal");
+    const joinChannel = document.getElementById("joinChannel");
+    
+    modal.style.display = "flex";
+    
+    closeModal.onclick = function() {
+        modal.style.display = "none";
+    };
+    
+    joinChannel.onclick = function() {
+        window.open("https://telegram.me/your_channel", "_blank");
+        modal.style.display = "none";
+    };
+</script>
+
+</body>
+</html>
